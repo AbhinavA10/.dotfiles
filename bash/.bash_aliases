@@ -11,3 +11,5 @@ alias cm='catkin_make'
 alias sd='source /opt/ros/kinetic/setup.bash && source ~/catkin_ws/devel/setup.bash'
 alias si='source /opt/ros/kinetic/setup.bash && source ~/integration/devel/setup.bash'
 alias rosbag_record_processing_input='rosbag record /object_detection /obstacle_detection /traffic_light_detection /traffic_sign_detection /navsat/odom /processing/hd_map /processing/roadline_post_processing'
+
+alias rosbag_filter_processing_input='rosbag filter ped_walking.bag ped_walking_processing_input.bag "topic == '/object_detection' or topic == '/traffic_light_detection' or topic == '/obstacles_3d' or topic ==  '/traffic_signs_3d' or topic ==  '/processing/hd_map' or topic ==  '/navsat/odom' or topic ==  '/processing/roadline_post_processing'"'

@@ -101,6 +101,12 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
+# source repo aliases
+if [ -f ~/.dotfiles/bash/.bash_aliases ]; then
+    . ~/.dotfiles/bash/.bash_aliases
+fi
+
+# source any aliases if they exist on the local machine only
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -117,10 +123,14 @@ if ! shopt -oq posix; then
 fi
 
 # adding ROS variables on terminal start
-source /opt/ros/kinetic/setup.bash
-# source ~/catkin_ws/devel/setup.bash
-source ~/integration/devel/setup.bash
+if [ -f /opt/ros/kinetic/setup.bash ]; then
+    source /opt/ros/kinetic/setup.bash
+fi
 
+# source ~/catkin_ws/devel/setup.bash
+if [ -f ~/integration/devel/setup.bash ]; then
+    source ~/integration/devel/setup.bash
+fi
 # powerline breadcrumbs on left
 if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
     source /usr/share/powerline/bindings/bash/powerline.sh
