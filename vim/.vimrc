@@ -5,12 +5,21 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 set rtp+=/usr/local/opt/fzf
+"" Default vim with Ubuntu does not have true color support
+"" set termguicolors 
+set t_Co=256
 
 call plug#begin('~/.vim/plugged')
 
-"" Plug '/usr/local/opt/fzf'
+"" Plugins, using vim-plug
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'dracula/vim'
+Plug 'aonemd/kuroi.vim'
 
 call plug#end()
+
+"" color dracula
+set background=dark
+colorscheme kuroi
 

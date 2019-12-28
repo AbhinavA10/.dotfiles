@@ -102,8 +102,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 # source repo aliases
-if [ -f ~/.dotfiles/bash/.bash_aliases ]; then
-    . ~/.dotfiles/bash/.bash_aliases
+if [ -f ~/.dotfiles/common/.bash_aliases ]; then
+    . ~/.dotfiles/common/.bash_aliases
 fi
 
 # source any aliases if they exist on the local machine only
