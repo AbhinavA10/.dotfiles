@@ -142,6 +142,6 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # OpenVINO
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/external/omp/lib:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/external/mkltiny_lnx/lib:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/lib/ubuntu_16.04/intel64:~/inference_engine_samples_build/intel64/Release/lib
-source /opt/intel/openvino/bin/setupvars.sh
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/external/omp/lib:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/external/mkltiny_lnx/lib:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/lib/ubuntu_16.04/intel64:~/inference_engine_samples_build/intel64/Release/lib
+# source /opt/intel/openvino/bin/setupvars.sh
 

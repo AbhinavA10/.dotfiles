@@ -1,3 +1,8 @@
+# systemd services
+alias running_services='systemctl list-units  --type=service  --state=running'
+alias active_services='systemctl list-units  --type=service  --state=active'
+
+
 #uw vpn
 alias vpn='/opt/cisco/anyconnect/bin/vpn'
 alias vpnui='/opt/cisco/anyconnect/bin/vpnui'
