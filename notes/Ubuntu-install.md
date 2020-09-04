@@ -386,3 +386,7 @@ StartupNotify=true
 ```
 http://ubuntuhandbook.org/index.php/2020/06/install-freefilesync-10-25-ubuntu-20-04/
 
+
+## Windows-like Theme with Gnome extensions
+https://github.com/vmavromatis/gnome-layout-manager
+https://www.lifewire.com/how-to-get-windows-style-gnome-taskbar-4685264
