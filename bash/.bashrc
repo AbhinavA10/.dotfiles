@@ -122,25 +122,29 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# adding ROS variables on terminal start
+# ROS
 if [ -f /opt/ros/kinetic/setup.bash ]; then
     source /opt/ros/kinetic/setup.bash
 fi
-
-# source ~/catkin_ws/devel/setup.bash
+if [ -f ~/catkin_ws/devel/setup.bash ]; then
+    source ~/catkin_ws/devel/setup.bash
+fi
 if [ -f ~/integration/devel/setup.bash ]; then
     source ~/integration/devel/setup.bash
 fi
+
 # powerline breadcrumbs on left
 if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
     source /usr/share/powerline/bindings/bash/powerline.sh
 fi
+# Homebrew
+if [ -d "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
 
-# virutalenv for python3
-# source ~/venv/bin/activate
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
+#fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # OpenVINO
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/external/omp/lib:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/external/mkltiny_lnx/lib:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/lib/ubuntu_16.04/intel64:~/inference_engine_samples_build/intel64/Release/lib
 # source /opt/intel/openvino/bin/setupvars.sh
