@@ -67,7 +67,7 @@ read -p "Do you want to install Pip for Python3? (pip3)" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sudo apt install python3-pip
+    sudo apt install python3-pip -y
 fi
 
 #powerline
