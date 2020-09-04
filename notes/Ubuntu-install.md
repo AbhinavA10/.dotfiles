@@ -384,5 +384,5 @@ Terminal=false
 Categories=Utility;FileTools;
 StartupNotify=true
 ```
-
+http://ubuntuhandbook.org/index.php/2020/06/install-freefilesync-10-25-ubuntu-20-04/
 
