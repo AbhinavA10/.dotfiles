@@ -18,6 +18,30 @@ then
 	sudo apt install kazam -y
 fi
 
+# Unity Tweak Tool
+read -p "Do you want to install Unity Tweak Tool? This is for Ubuntu 16" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo apt-get install unity-tweak-tool -y
+fi
+
+# Gnome Tweak Tool
+read -p "Do you want to install Gnome Tweak Tool? This is for Ubuntu 18" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo apt install gnome-tweaks -y
+fi
+
+# Local Time Setting
+read -p "Do you want to set hardware local RTC clock to be stored in local time? This will resolve time switching issues between Ubunutu and Windows." -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    timedatectl set-local-rtc 1
+fi
+
 # Eclipse for C++:
 read -p "Do you want to install Eclipse for C++ " -n 1 -r
 echo
@@ -36,6 +60,14 @@ then
     sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
     sudo apt update
     sudo apt install code -y
+fi
+
+# PIP for Python3
+read -p "Do you want to install Pip for Python3? (pip3)" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo apt install python3-pip
 fi
 
 #powerline
@@ -76,8 +108,16 @@ then
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 fi
 
-# Vim config and plug
-read -p "Do you want to install fzf?" -n 1 -r
+# Vim
+read -p "Do you want to install vim?" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo apt-get install vim -y
+fi
+
+# fzf
+read -p "Do you want to install fzf for terminal? This requires homebrew." -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then

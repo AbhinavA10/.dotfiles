@@ -5,3 +5,4 @@
 /bin/bash ./install.sh
 /bin/bash ./optional_install.sh
 /bin/bash ./link_dotfiles.sh
+#/bin/bash ./set_themes.sh
