@@ -1,0 +1,97 @@
+ abhi  ~  sudo apt-get install build-essential curl file git
+[sudo] password for abhi: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+build-essential is already the newest version (12.1ubuntu2).
+curl is already the newest version (7.47.0-1ubuntu2.14).
+curl set to manually installed.
+file is already the newest version (1:5.25-2ubuntu1.2).
+git is already the newest version (1:2.7.4-0ubuntu1.6).
+The following packages were automatically installed and are no longer required:
+  linux-headers-4.15.0-62 linux-headers-4.15.0-62-generic
+  linux-image-4.15.0-62-generic linux-modules-4.15.0-62-generic
+  linux-modules-extra-4.15.0-62-generic
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+ abhi  ~  echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >>~/.profile
+ abhi  ~  cat .profile 
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# the default umask is set in /etc/profile; for setting the umask
+# for ssh logins, install and configure the libpam-umask package.
+#umask 022
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin directories
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+ abhi  ~  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+ abhi  ~  brew install fzf
+==> Installing dependencies for fzf: patchelf and ncurses
+==> Installing fzf dependency: patchelf
+==> Downloading https://linuxbrew.bintray.com/bottles/patchelf-0.10.x86_64_linux
+==> Downloading from https://akamai.bintray.com/98/988b224305ff3fecadf9bbf5fbe1b
+######################################################################## 100.0%
+==> Pouring patchelf-0.10.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/patchelf/0.10: 8 files, 921.5KB
+==> Installing fzf dependency: ncurses
+==> Downloading https://linuxbrew.bintray.com/bottles/ncurses-6.1.x86_64_linux.b
+==> Downloading from https://akamai.bintray.com/5e/5eb929e69e3a2b71c2161551825fd
+######################################################################## 100.0%
+==> Pouring ncurses-6.1.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/ncurses/6.1: 3,856 files, 15.4MB
+==> Installing fzf
+==> Downloading https://linuxbrew.bintray.com/bottles/fzf-0.18.0.x86_64_linux.bo
+==> Downloading from https://akamai.bintray.com/a3/a3bc5196a3970e97b9a5cad074a1a
+######################################################################## 100.0%
+==> Pouring fzf-0.18.0.x86_64_linux.bottle.tar.gz
+==> Caveats
+To install useful keybindings and fuzzy completion:
+  /home/linuxbrew/.linuxbrew/opt/fzf/install
+
+To use fzf in Vim, add the following line to your .vimrc:
+  set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+==> Summary
+🍺  /home/linuxbrew/.linuxbrew/Cellar/fzf/0.18.0: 17 files, 3.7MB
+==> Caveats
+==> fzf
+To install useful keybindings and fuzzy completion:
+  /home/linuxbrew/.linuxbrew/opt/fzf/install
+
+To use fzf in Vim, add the following line to your .vimrc:
+  set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+ abhi  ~  $(brew --prefix)/opt/fzf/install
+Downloading bin/fzf ...
+  - Already exists
+  - Checking fzf executable ... 0.18.0
+Do you want to enable fuzzy auto-completion? ([y]/n) y
+Do you want to enable key bindings? ([y]/n) y
+
+Generate /home/abhi/.fzf.bash ... OK
+
+Do you want to update your shell configuration files? ([y]/n) y
+
+Update /home/abhi/.bashrc:
+  - [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+    + Added
+
+Finished. Restart your shell or reload config file.
+   source ~/.bashrc  # bash
+
+Use uninstall script to remove fzf.
+
+For more information, see: https://github.com/junegunn/fzf
+ abhi  ~  
+
