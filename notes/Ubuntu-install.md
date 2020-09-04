@@ -365,3 +365,24 @@ https://help.ubuntu.com/stable/ubuntu-help/keyboard-shortcuts-set.html.en
 - will need to do manually
 - `nautilus` is the `Command`
 
+## FreeFileSync
+Go to https://freefilesync.org/download.php. Download latest version for Linux.
+sudo tar -zxvf ~/Downloads/FreeFileSync_*_Linux.tar.gz -C /opt
+gedit ~/.local/share/applications/FreeFileSync.desktop
+
+Then copy paste the following into the notepad file that opens:
+```
+[Desktop Entry]
+Type=Application
+Name=FreeFileSync
+GenericName=Folder Comparison and Synchronization
+GenericName[de_DE]=Ordnervergleich und Synchronisation
+Exec=/opt/FreeFileSync/FreeFileSync %F
+Icon=/opt/FreeFileSync/Resources/FreeFileSync.png
+NoDisplay=false
+Terminal=false
+Categories=Utility;FileTools;
+StartupNotify=true
+```
+
+
