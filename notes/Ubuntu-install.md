@@ -96,11 +96,15 @@ echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-## Pip 2 and 3
+## Pip for Python 2
+
+```
+sudo apt install python-pip
+```
+## Pip3 for Python 3
 
 ```
 sudo apt install python3-pip
-sudo apt install python-pip
 ```
 
 ## VS-Code
@@ -110,6 +114,7 @@ Download the `.deb` file from [here](https://code.visualstudio.com/), then:
 ```
 sudo apt install ./<file>.deb
 ```
+or see install script
 
 ## Terminal Profiles
 
@@ -237,8 +242,9 @@ fi
 https://docs.brew.sh/Homebrew-on-Linux
 
 ## FZF and vim
-
+```
 sudo apt-get install vim
+```
 https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
 Follow instructions for fzf and vim plugin
 
@@ -307,7 +313,7 @@ sudo apt-get remove josm josm-plugins
 sudo apt-get install josm
 ```
 
-## Arc theme
+## Arc theme -- Ubuntu 16
 
 https://www.omgubuntu.co.uk/2016/06/install-latest-arc-gtk-theme-ubuntu-16-04
 https://github.com/horst3180/arc-theme
@@ -319,12 +325,6 @@ sudo apt-get update && sudo apt-get install arc-theme
 wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
 sudo apt-key add - < Release.key
 ```
-
->
-
-## Icon packs
-
-https://www.fossmint.com/best-linux-icon-themes/
 
 ## PPA remover
 
@@ -361,6 +361,8 @@ pkg install -forge general control signal image
 ```
 
 ## Custom shortcut for nautalis:
+Creating a key shortcut to open Nautalis using Windows+E
+
 https://help.ubuntu.com/stable/ubuntu-help/keyboard-shortcuts-set.html.en
 - will need to do manually
 - `nautilus` is the `Command`
@@ -388,5 +390,7 @@ http://ubuntuhandbook.org/index.php/2020/06/install-freefilesync-10-25-ubuntu-20
 
 
 ## Windows-like Theme with Gnome extensions
-https://github.com/vmavromatis/gnome-layout-manager
-https://www.lifewire.com/how-to-get-windows-style-gnome-taskbar-4685264
+For windows-like start menu and task bar
+
+- https://github.com/vmavromatis/gnome-layout-manager
+- https://www.lifewire.com/how-to-get-windows-style-gnome-taskbar-4685264
