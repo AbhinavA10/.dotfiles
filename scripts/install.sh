@@ -1,5 +1,5 @@
 # install basic items
-sudo apt-get install build-essential curl wget file git git-gui gitk -y
+sudo apt install build-essential curl wget file git git-gui gitk -y
 #build-essential includes gcc, g++, and make
 
 #CPU Temp sensor

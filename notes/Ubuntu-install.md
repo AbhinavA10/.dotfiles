@@ -221,6 +221,10 @@ To add autoscrolling to ubunutu:
 
 - In firefox, go to Preferences/Advanced/General/Browsing/"Use autoscrolling"
 
+To make backspace button go back a page:
+- https://itsfoss.com/enable-backspace-firefox-ubuntu-linux/
+- but change value from 2 to 0.
+
 ## Powerline
 
 [How to](https://mangolassi.it/topic/14298/get-started-with-powerline-on-ubuntu/2)
