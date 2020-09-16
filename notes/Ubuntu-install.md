@@ -398,3 +398,15 @@ For windows-like start menu and task bar
 
 - https://github.com/vmavromatis/gnome-layout-manager
 - https://www.lifewire.com/how-to-get-windows-style-gnome-taskbar-4685264
+
+## Slack 
+
+```
+sudo snap install slack --classic
+```
+## NVM
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04#installing-using-nvm
+```
+curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh -o install_nvm.sh
+bash install_nvm.sh
+```

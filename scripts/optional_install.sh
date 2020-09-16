@@ -140,3 +140,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     gnome-terminal -e --hold brew install fzf
 fi
+
+#tmux
+read -p "Do you want to install tmux" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	sudo apt install tmux -y
+fi
