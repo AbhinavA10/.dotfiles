@@ -125,12 +125,12 @@ then
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 fi
 
-# Vim
+# Vim with clipboard support
 read -p "Do you want to install vim? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sudo apt-get install vim -y
+    sudo apt-get install vim-gtk -y
 fi
 
 # fzf
