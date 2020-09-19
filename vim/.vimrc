@@ -23,3 +23,7 @@ call plug#end()
 set background=dark
 colorscheme kuroi
 
+"" Formatting git commit messsages.
+"" Switch on spellcheck and text wrapping to 72 chars
+autocmd Filetype gitcommit setlocal spell textwidth=72
+

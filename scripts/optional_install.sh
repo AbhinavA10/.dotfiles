@@ -92,7 +92,7 @@ read -p "Do you want to install powerline for terminal? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sudo apt-get install powerline -y
+    sudo apt install powerline -y
 fi
 
 #Homebrew
@@ -113,7 +113,7 @@ read -p "Do you want to install PPA remover? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sudo apt-get install ppa-purge -y
+    sudo apt install ppa-purge -y
 fi
 
 # zsh
@@ -130,7 +130,7 @@ read -p "Do you want to install vim? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sudo apt-get install vim-gtk -y
+    sudo apt install vim-gtk -y
 fi
 
 # fzf
@@ -146,5 +146,5 @@ read -p "Do you want to install tmux" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	sudo apt install tmux -y
+    sudo apt install tmux -y
 fi
