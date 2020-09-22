@@ -1,57 +1,17 @@
 # Ubuntu Install and Setup
+Common tools/programs that may need to be manually installed are listed as the first few entries below.
 
-## Temperature Sensor
-
-```
-sudo apt install psensor
-```
-
-https://itsfoss.com/check-laptop-cpu-temperature-ubuntu/
-
-## Screen Recorder
-
-Ubuntu has a built in screenshot taker.
-
-### Peek - Gif Recorder
-
-```
-sudo add-apt-repository ppa:peek-developers/stable
-sudo apt update
-sudo apt install peek
-```
-
-https://www.itsupportguides.com/knowledge-base/ubuntu/ubuntu-how-to-screen-record-to-gif/
-
-### Kazam - video recorder
-
-```
-sudo add-apt-repository ppa:sylvain-pineau/kazam
-sudo apt-get update
-sudo apt install kazam
-```
-
-https://itsfoss.com/kazam-screen-recorder/
-
-## Eclipse for C++:
-
-```
-sudo apt-get install g++
-sudo apt-get install eclipse eclipse-cdt // this also installed openjdk 7
-```
+This file does not outline installation instructions for tools already installed using `install.sh` or `optional_install.sh`
 
 ## Git
-
-```
-sudo apt-get install git
-sudo apt-get install git-gui
-sudo apt install gitk
-git config --global user.name "Your Name" #Manually
-git config --global user.email "youremail@domain.com" #Manually
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "youremail@domain.com"
 ```
 
 If installing git-all has a `runit` and `git-dameon` ... error, then do:
 
-```
+```bash
 sudo apt-get purge runit
 sudo apt-get purge git-all
 sudo apt-get purge git
@@ -63,19 +23,69 @@ sudo apt install git
 https://askubuntu.com/questions/765565/how-to-fix-processing-with-runit-and-git-daemon-run
 
 ### SSH setup:
-```
+```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 sudo apt-get install xclip
 xclip -sel clip < ~/.ssh/id_rsa.pub
 ```
-- paste into github list
+- paste into github section
 - Then test connection with `ssh -T git@github.com`
+
+## Firefox
+To add autoscrolling to ubunutu:
+
+- In firefox, go to Preferences/Advanced/General/Browsing/"Use autoscrolling"
+
+To make backspace button go back a page:
+- https://itsfoss.com/enable-backspace-firefox-ubuntu-linux/
+- but change value from 2 to 0.
+
+## Keyboard Shortcuts:
+### Custom shortcut for nautalis:
+Creating a key shortcut to open Nautalis using `Windows+E`
+
+https://help.ubuntu.com/stable/ubuntu-help/keyboard-shortcuts-set.html.en
+- `Command` is `nautilus`
+
+### For Window switching
+- set `ALT+TAB` to window switch, and `SUPER+TAB` to `app switch`
+
+## NVM
+To install latest version of node:
+```bash
+nvm install node
+nvm use node 
+```
+
+## FreeFileSync
+Go to https://freefilesync.org/download.php. Download latest version for Linux.
+
+```bash
+sudo tar -zxvf ~/Downloads/FreeFileSync_*_Linux.tar.gz -C /opt
+gedit ~/.local/share/applications/FreeFileSync.desktop
+```
+
+Then copy paste the following into the notepad file that opens:
+```
+[Desktop Entry]
+Type=Application
+Name=FreeFileSync
+GenericName=Folder Comparison and Synchronization
+GenericName[de_DE]=Ordnervergleich und Synchronisation
+Exec=/opt/FreeFileSync/FreeFileSync %F
+Icon=/opt/FreeFileSync/Resources/FreeFileSync.png
+NoDisplay=false
+Terminal=false
+Categories=Utility;FileTools;
+StartupNotify=true
+```
+Source: http://ubuntuhandbook.org/index.php/2020/06/install-freefilesync-10-25-ubuntu-20-04/
 
 ## ROS - Kinetic
 
-```
+```bash
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
 sudo apt-get update
@@ -89,58 +99,34 @@ sudo apt-get install ros-kinetic-rqt
 sudo apt-get install ros-next-rqt-common-plugins
 ```
 
-set ros variables automatically in new terminal: Note -- this causes conflicts in using `OpenCV` with python3 in a `venv`
-
-```
-echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-```
-
 ## Pip for Python 2
 
-```
+```bash
 sudo apt install python-pip
 ```
-## Pip3 for Python 3
-
-```
-sudo apt install python3-pip
-```
-
-## VS-Code
-
-Download the `.deb` file from [here](https://code.visualstudio.com/), then:
-
-```
-sudo apt install ./<file>.deb
-```
-or see install script
 
 ## Terminal Profiles
 
 Sources: [Exporting and Importing](https://unix.stackexchange.com/questions/448811/how-to-export-a-gnome-terminal-profile) and [Resetting](https://unix.stackexchange.com/questions/448811/how-to-export-a-gnome-terminal-profile)
 
 To export gnome-terminal profiles:
-
-```
+```bash
 dconf dump /org/gnome/terminal/legacy/profiles:/ > gnome-terminal-profiles.dconf
 ```
 
-To load gnome-terminal profiles from somewhere
-
-```
+To load gnome-terminal profiles from a file named `gnome-terminal-profiles.dconf`:
+```bash
 dconf load /org/gnome/terminal/legacy/profiles:/ < gnome-terminal-profiles.dconf
 ```
 
-> To reset terminal settings
-
-```
+To reset terminal settings:
+```bash
 dconf reset -f /org/gnome/terminal/
 ```
 
 ## OpenCV for C+
 
-```
+```bash
 sudo apt-get install build-essential
 sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
@@ -153,7 +139,7 @@ sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libp
 
 then follow the rest of the instructions except `sudo make install`. Packages compiled from sourced and installed using `make install` are often very hard to uninstall. Instead, use [this](https://stackoverflow.com/questions/1439950/whats-the-opposite-of-make-install-i-e-how-do-you-uninstall-a-library-in-li) to create a package (a `.deb` file) and install that:
 
-```
+```bash
 sudo apt-get install checkinstall
 # instead of sudo make install, we can now use:
 sudo checkinstall
@@ -161,38 +147,33 @@ sudo checkinstall
 
 To remove a package after having installed with checkinstall
 
-```
+```bash
 dpkg -r $PACKAGE_NAME_YOU_CHOSEN
 ```
 
 To test the installation of OpenCV, try running the program [shown here](https://docs.opencv.org/2.4/doc/tutorials/introduction/linux_gcc_cmake/linux_gcc_cmake.html#linux-gcc-usage)
-
-## Fixing clock issue in dual booting:
-
-```
-timedatectl set-local-rtc 1
-```
 
 ## Python
 
 - fix pip and pip2 using the stackoverflow link -- the 'cant import main' error in pip.
 - follow instructuions on tensorflow website to install tensorflow in venv
 
-
+```
      sys.exit(__main__._main()) -- modified line
      sys.exit(main()) -- original line
+```
 
 See: https://stackoverflow.com/questions/28210269/importerror-cannot-import-name-main-when-running-pip-version-command-in-windo
 
 Also, we can't source ros in bash and still use python 3 for another project. See [this](https://stackoverflow.com/questions/43019951/after-install-ros-kinetic-cannot-import-opencv/43500095#43500095)
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
-### venv
+## venv
 
-```
+```bash
 pip3 install virtualenv
 ```
 
@@ -200,53 +181,23 @@ pip3 install virtualenv
 
 These virtualenv's are non-relocatable
 
-```
+```bash
 virtualenv -p python3 ./venv
 source venv/bin/activate
 ```
 
-### dlib
+## dlib
 
 Install this, once in the venv.
 
 See [this](https://www.pyimagesearch.com/2018/01/22/install-dlib-easy-complete-guide/) for more info on installing.
 
-```
+```bash
 pip install dlib
 ```
 
-## Firefox
-
-To add autoscrolling to ubunutu:
-
-- In firefox, go to Preferences/Advanced/General/Browsing/"Use autoscrolling"
-
-To make backspace button go back a page:
-- https://itsfoss.com/enable-backspace-firefox-ubuntu-linux/
-- but change value from 2 to 0.
-
-## Powerline
-
-[How to](https://mangolassi.it/topic/14298/get-started-with-powerline-on-ubuntu/2)
-
-```
-sudo apt-get install powerline
-```
-
-then in `~/.bashrc`
-
-```
-if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
-    source /usr/share/powerline/bindings/bash/powerline.sh
-fi
-```
-
-## Homebrew
-
-https://docs.brew.sh/Homebrew-on-Linux
-
 ## FZF and vim
-```
+```bash
 sudo apt-get install vim
 ```
 https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
@@ -262,32 +213,19 @@ https://vi.stackexchange.com/questions/13718/how-to-install-fzf-vim-with-vundle
 - installed Intel OpenVINO toolkit
 - did not install or configure Model optimizer
 
-## Unity Tweak tool - Ubuntu 16
-
-```
-sudo apt-get install unity-tweak-tool
-```
-
-## Gnome Tweak tool - Ubuntu 18 and up
-
-```
-sudo apt install gnome-tweaks
-```
-
-
 ## protobuf3
 
 Protobuf3 installation instructions:
 Follow instructions from here: https://askubuntu.com/questions/1072683/how-can-i-install-protoc-on-ubuntu-16-04
 
-```
+```bash
 sudo apt-get install autoconf automake libtool curl make g++ unzip
 ```
 
 - Download protobuf-all-v3.6.1.tar.gz. from [here](https://github.com/protocolbuffers/protobuf/releases/tag/v3.6.1)
 - Extract the contents and change in the directory
 
-```
+```bash
 ./configure
 make
 make check
@@ -308,7 +246,7 @@ You can remove it from your system anytime using:
 
 https://josm.openstreetmap.de/wiki/Download
 
-```
+```bash
 echo deb https://josm.openstreetmap.de/apt $(lsb_release -sc) universe |
 sudo tee /etc/apt/sources.list.d/josm.list > /dev/null
 wget -q https://josm.openstreetmap.de/josm-apt.key -O- | sudo apt-key add -
@@ -322,39 +260,16 @@ sudo apt-get install josm
 https://www.omgubuntu.co.uk/2016/06/install-latest-arc-gtk-theme-ubuntu-16-04
 https://github.com/horst3180/arc-theme
 
-```
+```bash
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
-
 sudo apt-get update && sudo apt-get install arc-theme
 wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
 sudo apt-key add - < Release.key
 ```
 
-## PPA remover
-
-https://askubuntu.com/questions/307/how-can-ppas-be-removed
-
-```
-sudo apt-get install ppa-purge
-sudo ppa-purge ppa:whatever/ppa
-```
-
-## zsh
-
-https://www.howtoforge.com/tutorial/how-to-setup-zsh-and-oh-my-zsh-on-linux/
-
-```
-apt install zsh
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-source ~/.zshrc
-```
-
-https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
-
 ## Octave
 
-```
+```bash
 sudo add-apt-repository ppa:octave/stable
 sudo apt-get update
 sudo apt-get install octave # will install octave 4.2 instead of 4
@@ -364,49 +279,14 @@ pkg install -forge general control signal image
 
 ```
 
-## Custom shortcut for nautalis:
-Creating a key shortcut to open Nautalis using Windows+E
+## Slack 
 
-https://help.ubuntu.com/stable/ubuntu-help/keyboard-shortcuts-set.html.en
-- will need to do manually
-- `nautilus` is the `Command`
-
-## FreeFileSync
-Go to https://freefilesync.org/download.php. Download latest version for Linux.
-sudo tar -zxvf ~/Downloads/FreeFileSync_*_Linux.tar.gz -C /opt
-gedit ~/.local/share/applications/FreeFileSync.desktop
-
-Then copy paste the following into the notepad file that opens:
+```bash
+sudo snap install slack --classic
 ```
-[Desktop Entry]
-Type=Application
-Name=FreeFileSync
-GenericName=Folder Comparison and Synchronization
-GenericName[de_DE]=Ordnervergleich und Synchronisation
-Exec=/opt/FreeFileSync/FreeFileSync %F
-Icon=/opt/FreeFileSync/Resources/FreeFileSync.png
-NoDisplay=false
-Terminal=false
-Categories=Utility;FileTools;
-StartupNotify=true
-```
-http://ubuntuhandbook.org/index.php/2020/06/install-freefilesync-10-25-ubuntu-20-04/
-
 
 ## Windows-like Theme with Gnome extensions
 For windows-like start menu and task bar
 
 - https://github.com/vmavromatis/gnome-layout-manager
 - https://www.lifewire.com/how-to-get-windows-style-gnome-taskbar-4685264
-
-## Slack 
-
-```
-sudo snap install slack --classic
-```
-## NVM
-https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04#installing-using-nvm
-```
-curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh -o install_nvm.sh
-bash install_nvm.sh
-```

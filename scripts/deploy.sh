@@ -1,7 +1,7 @@
 #!/bin/bash
+echo "--- Welcome to my .dotfiles!"
 
-# to call install.sh, set the theme and things to what I use
-# to also call link_dotfiles.sh
+# Install tools, link dotfiles, and set themes
 /bin/bash ./install.sh
 /bin/bash ./optional_install.sh
 /bin/bash ./link_dotfiles.sh

@@ -1,22 +1,26 @@
 # .dotfiles
-My Config Dotfiles for Ubuntu
+My config dotfiles for Ubuntu
 
-## Some files
+## Included Scripts
 
-|              File              | Location |                     Purpose                     |
-| :----------------------------: | :------: | :---------------------------------------------: |
-|            .bashrc             |    ~/    |                                                 |
-|           .gdbinitd            |    ~/    |                formattng for gdb                |
-|            .profile            |    ~/    |                                                 |
-|           .tmux.conf           |    ~/    |  customizing colours and mouse usage on tmux   |
-| .gnome-terminal-profiles.dconf |          | customizing colours on default Ubunutu Terminal |
+The following scripts are included in `./scripts/`
+
+|          File         |                                Purpose                               |
+| :-------------------: | :------------------------------------------------------------------: |
+|      `deploy.sh`      |                        calls all other scripts                       |
+|      `install.sh`     | Install useful items by default e.g. git, g++, CPU temp sensor, etc. |
+|   `link_dotfiles.sh`  |   Create symlinks of dotfiles from `~/` to files in `~/.dotfiles/`   |
+| `optional_install.sh` |              Install optional items based on user input              |
+|    `set_themes.sh`    |                         Load terminal themes                         |
 
 ## Installer
 
-To install useful apps/tools etc, run 
+To install useful apps/tools etc, 
 
+- clone this repo into `~/`
+- then run:
 ```bash
-cd scripts
+cd .dotfiles/scripts
 ./deploy.sh
 ```
 

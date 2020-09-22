@@ -10,7 +10,7 @@ visible-name='Default_ubuntu'
 
 [:45b85612-0c4b-4ea6-8ff4-7ac87b118663]
 foreground-color='rgb(183,179,179)'
-visible-name='Personal_setup'
+visible-name='HackerMan'
 palette=['rgb(0,0,0)', 'rgb(204,0,0)', 'rgb(0,170,0)', 'rgb(170,85,0)', 'rgb(0,0,170)', 'rgb(170,0,170)', 'rgb(0,170,170)', 'rgb(170,170,170)', 'rgb(85,85,85)', 'rgb(255,85,85)', 'rgb(85,255,85)', 'rgb(255,255,85)', 'rgb(85,85,255)', 'rgb(255,85,255)', 'rgb(85,255,255)', 'rgb(255,255,255)']
 cursor-shape='block'
 use-system-font=true

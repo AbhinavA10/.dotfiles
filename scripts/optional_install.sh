@@ -1,5 +1,26 @@
+#!/bin/bash
+echo "--- Installing optional tools..."
+
+# Local Time Setting
+read -p "Do you want to set hardware local RTC clock to be stored in local time? This will resolve time switching issues between Ubunutu and Windows. " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    timedatectl set-local-rtc 1
+fi
+
+
+# Shutter - Screenshot software
+read -p "Do you want to install Shutter - Screenshot software? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo apt install shutter -y
+fi
+
 # Peek - Gif Recorder
-read -p "Do you want to install Peek - Gif Recorder? " -n 1 -r
+# https://www.itsupportguides.com/knowledge-base/ubuntu/ubuntu-how-to-screen-record-to-gif/
+read -p "Do you want to install Peek - GIF Recorder? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -9,6 +30,7 @@ then
 fi
 
 # Kazam - video recorder
+# https://itsfoss.com/kazam-screen-recorder/
 read -p "Do you want to install Kazam video recorder? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -24,15 +46,6 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     sudo apt install pinta -y
-fi
-
-
-# Shutter - Screenshot software
-read -p "Do you want to install Shutter - Screenshot software? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    sudo apt install shutter -y
 fi
 
 # Unity Tweak Tool
@@ -51,22 +64,15 @@ then
     sudo apt install gnome-tweaks -y
 fi
 
-# Local Time Setting
-read -p "Do you want to set hardware local RTC clock to be stored in local time? This will resolve time switching issues between Ubunutu and Windows. " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    timedatectl set-local-rtc 1
-fi
-
 # Eclipse for C++:
-read -p "Do you want to install Eclipse for C++ " -n 1 -r
+read -p "Do you want to install Eclipse for C++? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 # this also installed openjdk 7
     sudo apt-get install eclipse eclipse-cdt -y
 fi
+
 # VSCODE
 read -p "Do you want to install VScode? " -n 1 -r
 echo
@@ -77,6 +83,7 @@ then
     sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
     sudo apt update
     sudo apt install code -y
+    # Source: https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
 fi
 
 # PIP for Python3
@@ -87,15 +94,23 @@ then
     sudo apt install python3-pip -y
 fi
 
-#powerline
+# powerline
+# https://mangolassi.it/topic/14298/get-started-with-powerline-on-ubuntu/2
+# https://dev.to/jeancarlosn/powerline-for-ubuntu-3o14
+# https://www.freecodecamp.org/news/jazz-up-your-bash-terminal-a-step-by-step-guide-with-pictures-80267554cb22/
+# https://github.com/jaspernbrouwer/powerline-gitstatus#installation
 read -p "Do you want to install powerline for terminal? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     sudo apt install powerline -y
+    # Below are untested additions
+    sudo apt install fonts-powerline -y
+    sudo apt install powerline-gitstatus -y
 fi
 
-#Homebrew
+# Homebrew
+# https://docs.brew.sh/Homebrew-on-Linux
 read -p "Do you want to install homebrew? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -108,15 +123,9 @@ then
     echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 fi
 
-# PPA Remover
-read -p "Do you want to install PPA remover? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    sudo apt install ppa-purge -y
-fi
-
 # zsh
+# https://www.howtoforge.com/tutorial/how-to-setup-zsh-and-oh-my-zsh-on-linux/
+# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
 read -p "Do you want to install zsh? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -125,7 +134,16 @@ then
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 fi
 
-# Vim with clipboard support
+# fzf
+read -p "Do you want to install fzf for terminal? This requires homebrew. " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    gnome-terminal -e --hold brew install fzf
+    #TODO: might need to run an additional installer as per output instructions
+fi
+
+# vim with clipboard support
 read -p "Do you want to install vim? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -133,18 +151,32 @@ then
     sudo apt install vim-gtk -y
 fi
 
-# fzf
-read -p "Do you want to install fzf for terminal? This requires homebrew. " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    gnome-terminal -e --hold brew install fzf
-fi
-
-#tmux
-read -p "Do you want to install tmux" -n 1 -r
+# tmux
+read -p "Do you want to install tmux? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     sudo apt install tmux -y
+fi
+
+# NVM
+# https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04#installing-using-nvm
+read -p "Do you want to install nvm? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh -o install_nvm.sh
+    bash install_nvm.sh
+    rm -f install_nvm.sh
+    echo "---- WARNING: You should check for duplicate NVM entry in .bashrc now"
+fi
+
+# PPA Remover
+# https://askubuntu.com/questions/307/how-can-ppas-be-removed
+# Usage to remove a ppa: : sudo ppa-purge ppa:whatever/ppa
+read -p "Do you want to install PPA remover? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo apt install ppa-purge -y
 fi

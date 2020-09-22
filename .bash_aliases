@@ -2,16 +2,16 @@
 alias running_services='systemctl list-units  --type=service  --state=running'
 alias active_services='systemctl list-units  --type=service  --state=active'
 
+# short things
+alias plz='sudo'
+
 #uw vpn
-alias vpn='/opt/cisco/anyconnect/bin/vpn'
-alias vpnui='/opt/cisco/anyconnect/bin/vpnui'
+# alias vpn='/opt/cisco/anyconnect/bin/vpn'
+# alias vpnui='/opt/cisco/anyconnect/bin/vpnui'
 
 #python venvs
 alias ve='python3 -m venv ./venv'
 alias va='source ./venv/bin/activate'
-
-# Show list of recent commits and sha1's
-alias git-pretty-log='git log --graph --decorate --pretty=oneline --abbrev-commit'
 
 #ros
 # alias cm='catkin_make'

@@ -102,13 +102,18 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 # source repo aliases
-if [ -f ~/.dotfiles/common/.bash_aliases ]; then
-    . ~/.dotfiles/common/.bash_aliases
+if [ -f ~/.dotfiles/.bash_aliases ]; then
+    . ~/.dotfiles/.bash_aliases
 fi
 
 # source any aliases if they exist on the local machine only
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+# source any bashrc script if only local
+if [ -f ~/.dotfiles/.bashrc_local ]; then
+    . ~/.dotfiles/.bashrc_local
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -122,9 +127,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# ROS
+# ROS Kinetic
 if [ -f /opt/ros/kinetic/setup.bash ]; then
     source /opt/ros/kinetic/setup.bash
+    # Note: this causes conflicts in using `OpenCV` with python3 in a `venv`:
 fi
 if [ -f ~/catkin_ws/devel/setup.bash ]; then
     source ~/catkin_ws/devel/setup.bash
@@ -142,10 +148,34 @@ if [ -d "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
-#fzf
+# fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # OpenVINO
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/external/omp/lib:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/external/mkltiny_lnx/lib:/opt/intel/computer_vision_sdk/deployment_tools/inference_engine/lib/ubuntu_16.04/intel64:~/inference_engine_samples_build/intel64/Release/lib
 # source /opt/intel/openvino/bin/setupvars.sh
 
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# CONDA
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/abhi/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/abhi/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/abhi/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/abhi/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+# deactivate base environment
+conda deactivate

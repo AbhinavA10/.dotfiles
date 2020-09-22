@@ -1,0 +1,15 @@
+[user]
+	name = Abhinav
+	email = abhiraja1012@gmail.com
+
+[alias]
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg-orig = log --graph --decorate --pretty=oneline --abbrev-commit
+  subup = submodule update --init --recursive
+  fpush = push --force-with-lease
+# unsure of how safe below are
+#  count = rev-list --count HEAD ^origin/master
+#  fixhist = !git rebase -i HEAD~$(git count)
+
+[core]
+  editor = vim
