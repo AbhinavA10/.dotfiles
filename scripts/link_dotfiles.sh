@@ -1,6 +1,5 @@
 #!/bin/bash
 # Adapted from bmorcos' scripts
-echo "--- Linking dotfiles..."
 
 checkandlink () {
     # This will remove $DST if the file exists!
@@ -25,12 +24,13 @@ checkandlink () {
     fi
 }
 
-echo "Linking dotfiles..."
+echo "--- Linking dotfiles..."
 
 # declare an associative array hashmap
 declare -A TARGETS
 
 TARGETS[.bashrc]=.bashrc
+TARGETS[.condarc]=.condarc
 TARGETS[.gitconfig]=.gitconfig
 TARGETS[.tmux.conf]=.tmux.conf
 TARGETS[.vimrc]=.vimrc

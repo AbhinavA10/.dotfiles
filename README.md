@@ -25,3 +25,5 @@ cd .dotfiles/scripts
 ```
 
 Also see [./notes/Ubuntu-install.md](./notes/Ubuntu-install.md) for some manual setup steps needed
+
+TODO: make script to fix anaconda tinkter fonts
