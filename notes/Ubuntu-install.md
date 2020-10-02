@@ -290,3 +290,16 @@ For windows-like start menu and task bar
 
 - https://github.com/vmavromatis/gnome-layout-manager
 - https://www.lifewire.com/how-to-get-windows-style-gnome-taskbar-4685264
+
+## Vitals - Gnome Extension
+Another useful gnome extension (only for Ubuntu 18+) si `Vitals`
+- https://github.com/corecoding/Vitals
+
+```bash
+sudo apt install gir1.2-gtop-2.0 lm-sensors
+sudo apt-get install chrome-gnome-shell
+```
+Navigate to https://extensions.gnome.org/extension/1460/vitals/, and install the extension
+
+Then,
+- Restart GNOME Shell (`Alt+F2`, `r`, `Enter`) and enable the extension through `gnome-tweak-tool`.
