@@ -36,7 +36,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	sudo add-apt-repository ppa:sylvain-pineau/kazam
-	sudo apt-get update -y
+	sudo apt update -y
 	sudo apt install kazam -y
 fi
 
@@ -111,16 +111,18 @@ fi
 
 # Homebrew
 # https://docs.brew.sh/Homebrew-on-Linux
-read -p "Do you want to install homebrew? " -n 1 -r
+read -p "Do you want to install Homebrew? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sudo apt-get install build-essential curl file git -y
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    sudo apt install build-essential curl file git -y
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
     test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-    echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+    # Note: Don't need to do below 2 steps since eval()... step is already in .bashrc
+    # test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+    # echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
 # zsh
@@ -135,12 +137,23 @@ then
 fi
 
 # fzf
+# https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
 read -p "Do you want to install fzf for terminal? This requires homebrew. " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    gnome-terminal -e --hold brew install fzf
-    #TODO: might need to run an additional installer as per output instructions
+    brew install fzf
+    /home/linuxbrew/.linuxbrew/opt/fzf/install
+fi
+
+# diff-so-fancy
+# https://github.com/so-fancy/diff-so-fancy
+# https://formulae.brew.sh/formula/diff-so-fancy
+read -p "Do you want to install diff-so-fancy for git? This requires homebrew. " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    brew install diff-so-fancy
 fi
 
 # vim with clipboard support

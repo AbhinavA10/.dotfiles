@@ -144,7 +144,7 @@ if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
     source /usr/share/powerline/bindings/bash/powerline.sh
 fi
 # Homebrew
-if [ -d "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+if [ -d "/home/linuxbrew/.linuxbrew/bin/" ]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 

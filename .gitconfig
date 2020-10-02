@@ -14,8 +14,27 @@
 
 [core]
 	editor = vim
-	# pager = diff-so-fancy | less --tabs=4 -RFX
-	# https://github.com/so-fancy/diff-so-fancy
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	# For above, refer to https://github.com/so-fancy/diff-so-fancy
 
 [rebase]
 	autosquash = true
+
+# Below color scheme is for diff-so-fancy
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	#meta = 11
+  	#frag = white dim
+  	meta = cyan bold
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
