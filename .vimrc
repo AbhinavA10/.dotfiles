@@ -6,6 +6,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+"" Set line number on left
+set number
+
+"" Set location for fzf
 set rtp+=/usr/local/opt/fzf
 "" Default vim with Ubuntu does not have true color support
 "" set termguicolors 
