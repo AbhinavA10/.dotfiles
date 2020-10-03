@@ -5,9 +5,10 @@ alias active_services='systemctl list-units  --type=service  --state=active'
 
 # Other
 # ------------------
-alias plz='sudo'
 # Copy email from gitconfig to clipboard, stripping new line characters with perl
 alias email="git config --global user.email | perl -pe 'chomp' | xclip -selection clipboard"
+# usage e.g: findfile "*.png"
+alias findfile='find . -type f -name'
 
 # University of Waterloo vpn
 # ------------------
