@@ -9,6 +9,8 @@ alias active_services='systemctl list-units  --type=service  --state=active'
 alias email="git config --global user.email | perl -pe 'chomp' | xclip -selection clipboard"
 # usage e.g: findfile "*.png"
 alias findfile='find . -type f -name'
+alias update='sudo apt update'
+alias upgrade='sudo apt upgrade'
 
 # University of Waterloo vpn
 # ------------------

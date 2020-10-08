@@ -84,6 +84,7 @@ then
     sudo apt update
     sudo apt install code -y
     # Source: https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
+    /bin/bash ./code_extensions_install.sh
 fi
 
 # PIP for Python3
