@@ -11,6 +11,7 @@ alias email="git config --global user.email | perl -pe 'chomp' | xclip -selectio
 alias findfile='find . -type f -name'
 alias update='sudo apt update'
 alias upgrade='sudo apt upgrade'
+alias ll='ls -AlFh'
 
 # University of Waterloo vpn
 # ------------------
