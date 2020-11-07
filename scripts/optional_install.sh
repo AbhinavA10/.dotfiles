@@ -144,6 +144,10 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     brew install fzf
+    echo "\n Now installin fzf key-bindings and autocompletion"
+    echo "Say 'y' to 'enable fuzzy auto-completion'"
+    echo "Say 'y' to 'enable key bindings'"
+    echo "Say 'n' to 'update shell configuration files'"
     /home/linuxbrew/.linuxbrew/opt/fzf/install
 fi
 

@@ -292,7 +292,7 @@ For windows-like start menu and task bar
 - https://www.lifewire.com/how-to-get-windows-style-gnome-taskbar-4685264
 
 ## Vitals - Gnome Extension
-Another useful gnome extension (only for Ubuntu 18+) si `Vitals`
+Another useful gnome extension (only for Ubuntu 18+) is `Vitals`
 - https://github.com/corecoding/Vitals
 
 ```bash
