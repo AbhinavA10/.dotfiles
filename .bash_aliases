@@ -14,6 +14,8 @@ alias do_upgrade='sudo apt upgrade'
 alias update="do_update && do_upgrade"
 alias autoremove='sudo apt autoremove'
 alias ll='ls -AlFh'
+# Replace diff command with git diff
+alias diff='git diff --no-index'
 
 # University of Waterloo vpn
 # ------------------

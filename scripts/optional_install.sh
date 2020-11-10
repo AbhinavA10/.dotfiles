@@ -198,3 +198,14 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     sudo apt install ppa-purge -y
 fi
+
+
+# Redshift
+read -p "Do you want to install Redshift? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo apt install redshift-gtk -y
+    echo "Remember to grant Redshift access to location service before launching"
+    echo "This can be done by Settings -> Privacy -> Location"
+fi
