@@ -1,9 +1,4 @@
-# systemd services
-# ------------------
-alias running_services='systemctl list-units  --type=service  --state=running'
-alias active_services='systemctl list-units  --type=service  --state=active'
-
-# Other
+# General
 # ------------------
 # Copy email from gitconfig to clipboard, stripping new line characters with perl
 alias email="git config --global user.email | perl -pe 'chomp' | xclip -selection clipboard"
@@ -16,6 +11,7 @@ alias autoremove='sudo apt autoremove'
 alias ll='ls -AlFh'
 # Replace diff command with git diff
 alias diff='git diff --no-index'
+alias gg='git gui'
 
 # University of Waterloo vpn
 # ------------------
@@ -54,6 +50,10 @@ alias find-port-app="lsof -i"
 # Send SIGKILL signal to <PID>
 alias sigkill="sudo kill -9"
 # usage: `sigkill <PID>`
+
+# systemd services
+alias running_services='systemctl list-units  --type=service  --state=running'
+alias active_services='systemctl list-units  --type=service  --state=active'
 
 # Helper function for fix_conda_fonts()
 rename_wish(){
