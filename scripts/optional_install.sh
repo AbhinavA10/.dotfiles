@@ -189,6 +189,21 @@ then
     echo "---- WARNING: You should check for duplicate NVM entry in .bashrc now"
 fi
 
+
+# Anaconda/Miniconda.
+# https://docs.conda.io/en/latest/miniconda.html#linux-installers
+# https://conda.io/projects/conda/en/latest/user-guide/install/linux.html
+read -p "Do you want to install Miniconda3? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    cd ~/Downloads
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh
+    rm "Miniconda3-latest-Linux-x86_64.sh"
+fi
+
+
 # PPA Remover
 # https://askubuntu.com/questions/307/how-can-ppas-be-removed
 # Usage to remove a ppa: : sudo ppa-purge ppa:whatever/ppa
