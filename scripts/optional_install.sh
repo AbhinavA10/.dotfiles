@@ -74,6 +74,7 @@ then
 fi
 
 # VSCODE
+# https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
 read -p "Do you want to install VScode? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -83,7 +84,6 @@ then
     sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
     sudo apt update
     sudo apt install code -y
-    # Source: https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
     /bin/bash ./code_extensions_install.sh
 fi
 

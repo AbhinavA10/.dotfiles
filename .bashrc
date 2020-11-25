@@ -179,3 +179,33 @@ unset __conda_setup
 # <<< conda initialize <<<
 # deactivate base environment
 conda deactivate
+
+# Adding ~/.dotfiles/bin to PATH
+#####################################
+# Inspired by camspiers' dotfiles at https://github.com/camspiers/dotfiles/
+
+# Joins paths together by ":"
+# Arguments:
+#     $1: Array of paths, e.g. join ARR[@]
+# Returns:
+#     string
+join_paths() { a=("${!1}"); local IFS=":"; echo "${a[*]}"; }
+
+# Deduplicates paths separated by ":"
+# Arguments:
+#     $1: string of paths separated by ":"
+# Returns:
+#     string
+dedup_paths() { echo -n $1 | awk -v RS=: -v ORS=: '!arr[$0]++'; }
+
+# User paths
+USER_PATHS=(
+  "$HOME/.dotfiles/bin" # Personal scripts
+)
+
+# Set PATH with ordering: PATH:USER
+export PATH=$(dedup_paths "$PATH:$(join_paths USER_PATHS[@])")
+
+# Delete functions so they can't be called by a user when the terminal has opened
+unset join_paths
+unset dedup_paths

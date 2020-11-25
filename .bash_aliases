@@ -39,7 +39,6 @@ alias ci="conda install"
 alias cr="conda remove"
 alias ca="conda activate"
 
-
 # Linux processes
 # ------------------
 # For Finding program that is using a specific port
@@ -54,36 +53,3 @@ alias sigkill="sudo kill -9"
 # systemd services
 alias running_services='systemctl list-units  --type=service  --state=running'
 alias active_services='systemctl list-units  --type=service  --state=active'
-
-# Helper function for fix_conda_fonts()
-rename_wish(){
-    original=$1/bin/wish
-    if [ -f $original ]; then
-        rename=$1/bin/wish-tk
-        echo "Renamed $original --> $rename"
-        $(mv -f $original $rename)
-    fi
-}
-
-# A more complex 'alias' to rename all wish files in anaconda/miniconda env.
-# Anaconda has an issue with tkinter fonts, which are used by gitk and git gui
-# https://stackoverflow.com/questions/48786593/regular-fonts-for-git-gui-and-gitk-have-disappeared
-fix_conda_fonts() {
-    # Find anaconda/miniconda path first. 
-    CONDA_PATH=$(which conda)
-    # Remove last 2 folders from path
-    CONDA_PATH=$(dirname ${CONDA_PATH})
-    CONDA_PATH=$(dirname ${CONDA_PATH})
-
-    # Rename in all created conda envs
-    # https://unix.stackexchange.com/questions/86722/how-do-i-loop-through-only-directories-in-bash
-    for env_path in ${CONDA_PATH}/envs/*; do
-        if [ -d "$env_path" ]; then
-            # Will not run if no directories are available
-            rename_wish $env_path
-        fi
-    done
-
-    # Rename in base conda envs
-    rename_wish $CONDA_PATH
-}
