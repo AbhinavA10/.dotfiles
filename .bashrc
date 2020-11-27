@@ -56,10 +56,33 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Setup bash prompt and Add colour
+
+# https://askubuntu.com/questions/730754/how-do-i-show-the-git-branch-with-colours-in-bash-prompt
+# https://digitalfortress.tech/tutorial/setting-up-git-prompt-step-by-step/
+# __git_ps1 is included here /usr/lib/git-core/git-sh-prompt by default.
+# There is no need to clone from https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+
+# __git_ps1 configuration options. 
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUPSTREAM="auto"
+# GIT_PS1_SHOWSTASHSTATE=true
+# GIT_PS1_SHOWUNTRACKEDFILES=true
+# GIT_PS1_HIDE_IF_PWD_IGNORED=true
+# GIT_PS1_SHOWCOLORHINTS=true
+
+# colour codes: https://gist.github.com/vratiu/9780109
+BOLD_RED="\[\033[01;31m\]"
+BOLD_GREEN="\[\033[1;32m\]"
+Color_Off="\[\033[0m\]" # Text Reset
+BOLD_BLUE="\[\033[1;34m\]" # Blue
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ' # original
+    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$BOLD_RED\$(__git_ps1)\[\033[00m\]\$ "
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ ' # original
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1)\$ '
 fi
 unset color_prompt force_color_prompt
 
