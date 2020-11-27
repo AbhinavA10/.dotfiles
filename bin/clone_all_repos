@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Clones user's public and private repos to ~/Desktop/cloned_repos/...
+
+# BEFORE RUNNING THIS SCRIPT:
+# Setup a 'Personal Access token' in your Github Account, with 'repo' scope. 
+# Then, Replace '[[TOKEN]]' below with your token
+TOKEN="[[TOKEN]]"
+
+# Check proper scopes are setup
+SCOPES=$(curl -sIH "Authorization: token $TOKEN" 'https://api.github.com/user/repos' | grep "X-OAuth-Scopes")
+pat="repo"
+if ! [[ $SCOPES =~ $pat ]]; then
+    if [[ $TOKEN  == "[[TOKEN]]" ]]; then
+        echo "Must supply Access Token! See comments in this script."
+    else
+        echo "Incorrect OAuth Scopes. Make sure you setup access token with 'repo' scopes! See comments in this script."
+    fi
+    exit 1 # stop this script
+fi
+
+mkdir -p ~/Desktop/cloned_repos/owner
+mkdir -p ~/Desktop/cloned_repos/member
+
+# Retreive list of repositories using the Github API
+# https://stackoverflow.com/questions/46725688/how-to-clone-all-repos-including-private-repos-from-github
+# https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repositories-for-the-authenticated-user
+# https://stedolan.github.io/jq/tutorial/
+
+TYPE="owner"
+clone_repos(){
+    local API_URL="https://api.github.com/user/repos?type=$TYPE&page=1&per_page=100"
+    # Make request to API using curl, parse json response for ssh_url's using `jq`, then remove any characters that would break git clone command
+    local URLS=$(curl -H "Authorization: token $TOKEN" -H "Accept: application/vnd.github.v3+json" $API_URL | jq '.[] | .ssh_url' |tr -d '",')
+    for repo_url in $URLS
+    do
+        echo "Cloning $repo_url"
+        git clone $repo_url
+    done
+}
+
+# Clone repos user owns
+cd ~/Desktop/cloned_repos/owner
+TYPE="owner"
+clone_repos
+# Clone repos user is a collaborator on
+cd ~/Desktop/cloned_repos/member
+TYPE="member"
+clone_repos
