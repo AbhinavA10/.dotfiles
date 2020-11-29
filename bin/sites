@@ -1,0 +1,5 @@
+#!/bin/bash
+export SITES=(
+    example.com
+    www.example.com
+)
