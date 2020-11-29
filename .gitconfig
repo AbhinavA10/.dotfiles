@@ -14,8 +14,10 @@
 
 [core]
 	editor = vim
+	# Pager setting - refer to https://github.com/so-fancy/diff-so-fancy
 	pager = diff-so-fancy | less --tabs=4 -RFX
-	# For above, refer to https://github.com/so-fancy/diff-so-fancy
+	# Global gitignore
+	excludesfile = /home/abhi/.dotfiles/.gitignore_global
 
 [rebase]
 	autosquash = true

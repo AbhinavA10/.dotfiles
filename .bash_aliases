@@ -7,7 +7,7 @@ alias findfile='find . -type f -name'
 alias do_update='sudo apt update'
 alias do_upgrade='sudo apt upgrade'
 alias update="do_update && do_upgrade"
-alias autoremove='sudo apt autoremove'
+alias autoremove='sudo apt autoremove -y'
 alias ll='ls -AlFh'
 # Replace diff command with git diff
 alias diff='git diff --no-index'
