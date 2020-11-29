@@ -1,5 +1,7 @@
 #!/bin/bash
 echo "--- Installing optional tools..."
+echo "Simply type 'y' or 'n', without the qoutation marks, for each question."
+echo "There is no need to press ENTER after typing your response."
 
 # Local Time Setting
 read -p "Do you want to set hardware local RTC clock to be stored in local time? This will resolve time switching issues between Ubunutu and Windows. " -n 1 -r
@@ -38,6 +40,17 @@ then
 	sudo add-apt-repository ppa:sylvain-pineau/kazam
 	sudo apt update -y
 	sudo apt install kazam -y
+fi
+
+# Krita - Photo editing software
+# https://launchpad.net/~kritalime/+archive/ubuntu/ppa
+read -p "Do you want to install Krita - Photo editing software? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo add-apt-repository ppa:kritalime/ppa
+    sudo apt-get update
+    sudo apt-get install krita
 fi
 
 # Pinta - Photo editing software
