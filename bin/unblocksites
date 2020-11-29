@@ -1,9 +1,16 @@
 #!/bin/bash
-# Based on tbekolay's scripts
 
-source sites
-DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-for site in "${SITES[@]}"; do
-    sudo $DIR/etchosts remove $site
-done
-sudo rm -v /etc/hosts.bak # etchosts script creates a backup file, that we don't need
+# Restore the backup hosts file
+HOSTSFILE="/etc/hosts"
+BAKFILE="$HOSTSFILE.original.bak"
+sudo cp $BAKFILE $HOSTSFILE 
+echo "Restored original hosts file"
+sudo rm -v $BAKFILE
+
+# Remove custom blacklisted sites. Based on tbekolay's scripts
+# source sites
+# DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+# for site in "${SITES[@]}"; do
+#     sudo $DIR/etchosts remove $site
+# done
+# sudo rm -v /etc/hosts.bak # etchosts script creates a backup file, that we don't need

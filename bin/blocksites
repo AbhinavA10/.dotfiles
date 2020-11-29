@@ -1,8 +1,33 @@
 #!/bin/bash
-# Based on tbekolay's scripts
 
-source sites
-DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-for site in "${SITES[@]}"; do
-    sudo $DIR/etchosts add $site 127.0.0.1
-done
+# Summary of https://github.com/StevenBlack/hosts and https://someonewhocares.org/hosts/
+# A hosts file is a plain-text file used by all operating systems to map hostnames
+# to IP addresses. Usually, the hosts file is preferential to DNS. Therefore if a domain
+# name is resolved by the hosts file, the request never leaves your computer.
+# We can use this file to prevent your computer from connecting to selected
+# internet hosts. This is an easy and effective way to protect yourself from
+# many types of spyware, malware, adware reduces bandwidth use, blocks certain pop-up
+# traps, prevents user tracking by way of "web bugs" embedded in spam, and blocks
+# most advertising you would otherwise be subjected to on the internet.
+
+# The project https://github.com/StevenBlack/hosts unifies hosts files from multiple
+# sources, including Dan Pollock's https://someonewhocares.org/hosts/
+
+# Download StevenBlack's latest unified hosts file, and replace our own hosts file
+HOSTSFILE="/etc/hosts"
+BAKFILE="$HOSTSFILE.original.bak"
+DOWNLOADED_HOSTSFILE=~/.dotfiles/hosts
+HOSTSFILE_URL="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+wget $HOSTSFILE_URL -O $DOWNLOADED_HOSTSFILE
+sudo cp -n $HOSTSFILE $BAKFILE # Backup old /etc/hosts if a backup doesn't already exist
+echo "Backup of original hosts file made at $BAKFILE"
+sudo cp $DOWNLOADED_HOSTSFILE $HOSTSFILE
+rm $DOWNLOADED_HOSTSFILE
+echo "Done adding new hosts file"
+
+# Add custom blacklisted sites. Based on tbekolay's scripts
+# source sites
+# DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+# for site in "${SITES[@]}"; do
+#     sudo $DIR/etchosts add $site 0.0.0.0
+# done
