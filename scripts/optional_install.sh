@@ -192,14 +192,12 @@ fi
 
 # NVM
 # https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04#installing-using-nvm
+# https://github.com/nvm-sh/nvm
 read -p "Do you want to install nvm? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh -o install_nvm.sh
-    bash install_nvm.sh
-    rm -f install_nvm.sh
-    echo "---- WARNING: You should check for duplicate NVM entry in .bashrc now"
+    curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 fi
 
 
@@ -210,7 +208,6 @@ read -p "Do you want to install Miniconda3? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    cd ~/Downloads
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh
     rm "Miniconda3-latest-Linux-x86_64.sh"
