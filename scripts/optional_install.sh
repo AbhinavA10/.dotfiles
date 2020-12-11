@@ -2,6 +2,7 @@
 echo "--- Installing optional tools..."
 echo "Simply type 'y' or 'n', without the qoutation marks, for each question."
 echo "There is no need to press ENTER after typing your response."
+printf "\n"
 
 # Local Time Setting
 read -p "Do you want to set hardware local RTC clock to be stored in local time? This will resolve time switching issues between Ubunutu and Windows. " -n 1 -r
@@ -211,6 +212,22 @@ then
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh
     rm "Miniconda3-latest-Linux-x86_64.sh"
+fi
+
+
+# Bpytop
+# https://github.com/aristocratos/bpytop#snap-package
+read -p "Do you want to install bpytop? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo snap install bpytop
+    sudo snap connect bpytop:mount-observe
+    sudo snap connect bpytop:network-control
+    sudo snap connect bpytop:hardware-observe
+    sudo snap connect bpytop:system-observe
+    sudo snap connect bpytop:process-control
+    sudo snap connect bpytop:physical-memory-observe
 fi
 
 

@@ -1,5 +1,3 @@
-"" so ~/.dotfiles/.vimrc
-
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -15,17 +13,14 @@ set rtp+=/usr/local/opt/fzf
 "" set termguicolors 
 set t_Co=256
 
-call plug#begin('~/.vim/plugged')
-
 "" Plugins, using vim-plug
+call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'dracula/vim'
 Plug 'aonemd/kuroi.vim'
-
+Plug 'preservim/nerdtree'
 call plug#end()
 
-"" color dracula
 set background=dark
 colorscheme kuroi
 
@@ -33,3 +28,11 @@ colorscheme kuroi
 "" Switch on spellcheck and text wrapping to 72 chars
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+"" Open NERDTree with CTRL+n
+map <C-n> :NERDTreeToggle<CR>
+
+"" https://unix.stackexchange.com/questions/12535/how-to-copy-text-from-vim-to-an-external-program
+"" To copy/paste from vim to system clipboard
+"" CTRL+V, then highlight whatever text
+"" "+y to copy
+"" "+p to paste
