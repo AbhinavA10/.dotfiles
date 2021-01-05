@@ -12,6 +12,10 @@ alias ll='ls -AlFh'
 # Replace diff command with git diff
 alias diff='git diff --no-index'
 alias gg='git gui'
+# Replaces `:` with `_` in all mp4 files in current directory.
+# This makes the filename Windows OS safe.
+# Run this alias as `rename_files -n` For a dry run.
+alias rename_files="rename 's/\:/_/g' *.mp4 -v"
 
 # University of Waterloo vpn
 # ------------------
