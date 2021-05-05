@@ -16,6 +16,10 @@ alias gg='git gui'
 # This makes the filename Windows OS safe.
 # Run this alias as `rename_files -n` For a dry run.
 alias rename_files="rename 's/\:/_/g' *.mp4 -v"
+# Run this alias as `limit <pid>`. The limit of 500 limits cpu usage of the process to 
+# 62% * 8 cores
+alias limit="cpulimit --limit=500 -p "
+
 
 # University of Waterloo vpn
 # ------------------
