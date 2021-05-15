@@ -15,8 +15,10 @@
 	pushf = push --force-with-lease
 	# Count number of commits this branch is ahead, wrt remote master
 	count = rev-list --count HEAD ^origin/master
+	countmain = rev-list --count HEAD ^origin/main
 	# Interactive rebase for `count` number of commits.
 	fixhist = !git rebase -i HEAD~$(git count)
+	fixhistmain = !git rebase -i HEAD~$(git countmain)
 	# A regular git pull will record a merge with upstream. Running git pull --rebase will rebase any local-only commits
 	up = pull --rebase
 
