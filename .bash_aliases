@@ -9,6 +9,16 @@ alias do_upgrade='sudo apt upgrade'
 alias update="do_update && do_upgrade"
 alias autoremove='sudo apt autoremove -y'
 alias ll='ls -AlFh'
+
+# Can't check for exa command directly, since brew is activated later in .bash_rc
+if [ -f "/home/linuxbrew/.linuxbrew/bin/exa" ]; 
+then
+    # Only use exa if it is installed
+    alias ls='exa --group-directories-first --icons'
+    alias ll='exa -laF --header --group-directories-first --git --icons'
+    alias tree='exa -T --group-directories-first --icons'
+fi
+
 # Replace diff command with git diff
 alias diff='git diff --no-index'
 alias gg='git gui'

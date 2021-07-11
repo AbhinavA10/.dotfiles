@@ -175,6 +175,24 @@ then
     brew install diff-so-fancy
 fi
 
+# exa
+# https://the.exa.website/
+# A replacement for ls
+# https://askubuntu.com/questions/3697/how-do-i-install-fonts
+read -p "Do you want to install exa? This requires homebrew. " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    brew install exa
+    # Install Ubuntu Mono Nerd Font
+    mkdir /tmp/temp_nerd_font
+    curl -o /tmp/temp_nerd_font/UbuntuMono.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/UbuntuMono.zip
+    mkdir /tmp/temp_nerd_font/new_fonts
+    unzip /tmp/temp_nerd_font/UbuntuMono.zip -d /tmp/temp_nerd_font/new_fonts
+    sudo mv  -v /tmp/temp_nerd_font/new_fonts/* /usr/local/share/fonts 
+fi
+
+
 # vim with clipboard support
 read -p "Do you want to install vim? " -n 1 -r
 echo
