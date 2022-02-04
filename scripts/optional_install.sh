@@ -295,3 +295,14 @@ then
     newgrp docker
     docker run hello-world
 fi
+
+# CMake
+read -p "Do you want to install CMake? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    curl -L https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-linux-x86_64.sh -o cmake.sh
+    sudo sh cmake.sh --prefix=/usr/local/ --exclude-subdir
+    rm cmake.sh
+    cmake --version
+fi
