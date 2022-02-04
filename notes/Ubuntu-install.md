@@ -303,3 +303,29 @@ Navigate to https://extensions.gnome.org/extension/1460/vitals/, and install the
 
 Then,
 - Restart GNOME Shell (`Alt+F2`, `r`, `Enter`) and enable the extension through `gnome-tweak-tool`.
+
+## libserial
+A serial port library for C++ and Linux
+```bash
+cd Downloads
+git clone https://github.com/crayzeewulf/libserial.git
+cd libserial
+./compile.sh
+cd build
+sudo make install # or sudo checkinstall
+sudo ldconfig # update dynamic library links
+sudo ln -s /usr/local/lib/libserial.a /usr/local/lib/liblibserial_static.a # update static library link
+```
+
+## fmt
+A python-style string formatting library for C++
+```bash
+cd Downloads
+git clone https://github.com/fmtlib/fmt.git
+cd fmt
+mkdir build
+cd build
+cmake -DBUILD_SHARED_LIBS=TRUE ..
+make
+sudo make install # or sudo checkinstall
+```
