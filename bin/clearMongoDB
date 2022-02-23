@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Ouputs a block of commands that can be copied into a mongo shell 
+# to clear databases
+
+cat << EOF
+db = db.getSiblingDB('admin');
+db.runCommand({ 'listDatabases': 1 }).databases.forEach(function(x) {
+  // loop through all the database names
+  if (['admin', 'config', 'local'].indexOf(x['name']) < 0) {
+    // drop database if it's not admin, config, or local
+    print(x);
+    db.getSiblingDB(x['name']).dropDatabase();
+  }
+})
+EOF
