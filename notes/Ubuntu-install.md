@@ -329,3 +329,6 @@ cmake -DBUILD_SHARED_LIBS=TRUE ..
 make
 sudo make install # or sudo checkinstall
 ```
+
+## Processing IDE
+Installing processing on Ubuntu: http://www.artsnova.com/processing/Installing-Processing-on-Ubuntu-LTS-Focal-Fossa.html 

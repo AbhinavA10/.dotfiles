@@ -59,7 +59,7 @@ read -p "Do you want to install Pinta - Photo editing software? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sudo apt install pinta -y
+    sudo snap install pinta -y
 fi
 
 # Unity Tweak Tool
@@ -305,4 +305,22 @@ then
     sudo sh cmake.sh --prefix=/usr/local/ --exclude-subdir
     rm cmake.sh
     cmake --version
+
+# KiCad
+read -p "Do you want to install KiCad? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo add-apt-repository --yes ppa:kicad/kicad-5.1-releases
+    sudo apt update
+    sudo apt install --install-recommends kicad
+fi
+
+# Arduino IDE
+read -p "Do you want to install Arduino IDE? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo snap install arduino
+    sudo usermod -a -G dialout $USER #Give user access to ‘com’ port and restart computer
 fi
