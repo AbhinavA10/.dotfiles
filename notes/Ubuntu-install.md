@@ -332,3 +332,15 @@ sudo make install # or sudo checkinstall
 
 ## Processing IDE
 Installing processing on Ubuntu: http://www.artsnova.com/processing/Installing-Processing-on-Ubuntu-LTS-Focal-Fossa.html 
+
+## NVIDIA Drivers
+- https://linuxize.com/post/how-to-nvidia-drivers-on-ubuntu-20-04/
+```bash
+ubuntu-drivers devices
+# install recommended driver
+sudo apt install nvidia-driver-470
+sudo reboot
+nvidia-smi
+sudo nvidia-settings
+sudo apt install nvtop
+```

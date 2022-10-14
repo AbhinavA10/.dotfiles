@@ -49,6 +49,11 @@ alias va='source ./venv/bin/activate'
 # alias rosbag_record_processing_input='rosbag record /object_detection /obstacle_detection /traffic_light_detection /traffic_sign_detection /navsat/odom /processing/hd_map /processing/roadline_post_processing'
 # alias rosbag_filter_processing_input='rosbag filter ped_walking.bag ped_walking_processing_input.bag "topic == '/object_detection' or topic == '/traffic_light_detection' or topic == '/obstacles_3d' or topic ==  '/traffic_signs_3d' or topic ==  '/processing/hd_map' or topic ==  '/navsat/odom' or topic ==  '/processing/roadline_post_processing'"'
 
+# ROS2 Galactic
+# ------------------
+alias cm='colcon build --symlink-install'
+alias sd='source /opt/ros/galactic/setup.bash && . ~/ros2_ws/install/local_setup.bash'
+
 # Conda
 # ------------------
 alias ceu="conda env update"

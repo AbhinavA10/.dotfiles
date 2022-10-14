@@ -196,6 +196,14 @@ if [ -f /opt/ros/kinetic/setup.bash ]; then
     source /opt/ros/kinetic/setup.bash
     # Note: this causes conflicts in using `OpenCV` with python3 in a `venv`:
 fi
+# ROS2 Galactic - MTE 544
+if [ -f /opt/ros/galactic/setup.bash ]; then
+    source /opt/ros/galactic/setup.bash
+    export TURTLEBOT3_MODEL=burger
+    source /usr/share/colcon_cd/function/colcon_cd.sh
+    export _colcon_cd_root=/opt/ros/galactic/
+    source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
+fi
 if [ -f ~/catkin_ws/devel/setup.bash ]; then
     source ~/catkin_ws/devel/setup.bash
 fi
