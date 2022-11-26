@@ -205,8 +205,8 @@ if [ -f /opt/ros/galactic/setup.bash ]; then
     source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
     # Added from Lab 1
     export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
-    export FASTRTPS_DEFAULT_PROFILES_FILE=$HOME/.fastdds.xml
-    echo -e "\e[31mDon't forget to set ROS_DOMAIN_ID\e[39m"
+    export FASTRTPS_DEFAULT_PROFILES_FILE=$HOME/.home_fastdds.xml
+    # echo -e "\e[31mDon't forget to set ROS_DOMAIN_ID\e[39m"
     export ROS_DOMAIN_ID=4 # robot 4
 fi
 if [ -f ~/catkin_ws/devel/setup.bash ]; then

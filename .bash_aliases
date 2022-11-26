@@ -52,7 +52,7 @@ alias va='source ./venv/bin/activate'
 # ROS2 Galactic
 # ------------------
 alias cm='colcon build --symlink-install'
-alias sd='source /opt/ros/galactic/setup.bash && . ~/ros2_ws/install/local_setup.bash'
+alias sd='source /opt/ros/galactic/setup.bash && source install/local_setup.bash'
 
 # Conda
 # ------------------
