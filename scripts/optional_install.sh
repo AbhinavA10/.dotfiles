@@ -38,7 +38,7 @@ read -p "Do you want to install Kazam video recorder? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	sudo add-apt-repository ppa:sylvain-pineau/kazam
+	sudo add-apt-repository ppa:sylvain-pineau/kazam    
 	sudo apt update -y
 	sudo apt install kazam -y
 fi
@@ -60,14 +60,6 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     sudo snap install pinta -y
-fi
-
-# Unity Tweak Tool
-read -p "Do you want to install Unity Tweak Tool? This is for Ubuntu 16 " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    sudo apt install unity-tweak-tool -y
 fi
 
 # Gnome Tweak Tool
@@ -93,20 +85,8 @@ read -p "Do you want to install VScode? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sudo apt install software-properties-common apt-transport-https wget -y
-    wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-    sudo apt update
-    sudo apt install code -y
+    sudo snap install --classic code 
     /bin/bash ./code_extensions_install.sh
-fi
-
-# PIP for Python3
-read -p "Do you want to install Pip for Python3? (pip3) " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    sudo apt install python3-pip -y
 fi
 
 # powerline
@@ -216,7 +196,7 @@ read -p "Do you want to install nvm? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+    curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 fi
 
 
@@ -228,7 +208,9 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    bash Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh -b
+    source ~/miniconda3/bin/activate
+    conda init bash
     rm "Miniconda3-latest-Linux-x86_64.sh"
 fi
 
@@ -239,26 +221,8 @@ read -p "Do you want to install bpytop? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sudo snap install bpytop
-    sudo snap connect bpytop:mount-observe
-    sudo snap connect bpytop:network-control
-    sudo snap connect bpytop:hardware-observe
-    sudo snap connect bpytop:system-observe
-    sudo snap connect bpytop:process-control
-    sudo snap connect bpytop:physical-memory-observe
+    sudo apt install bpytop -y
 fi
-
-
-# PPA Remover
-# https://askubuntu.com/questions/307/how-can-ppas-be-removed
-# Usage to remove a ppa: : sudo ppa-purge ppa:whatever/ppa
-read -p "Do you want to install PPA remover? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    sudo apt install ppa-purge -y
-fi
-
 
 # Redshift
 read -p "Do you want to install Redshift? " -n 1 -r
@@ -278,42 +242,15 @@ then
     sudo apt install cpulimit
 fi
 
-# Docker for Linux
-# https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
-read -p "Do you want to install Docker? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt-get update
-    sudo apt-get install docker-ce docker-ce-cli containerd.io
-    sudo groupadd docker
-    sudo usermod -aG docker $USER
-    newgrp docker
-    docker run hello-world
-fi
-
 # CMake
 read -p "Do you want to install CMake? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    curl -L https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-linux-x86_64.sh -o cmake.sh
+    curl -s -L https://github.com/Kitware/CMake/releases/download/v3.27.1/cmake-3.27.1-linux-x86_64.sh -o cmake.sh
     sudo sh cmake.sh --prefix=/usr/local/ --exclude-subdir
     rm cmake.sh
     cmake --version
-
-# KiCad
-read -p "Do you want to install KiCad? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    sudo add-apt-repository --yes ppa:kicad/kicad-5.1-releases
-    sudo apt update
-    sudo apt install --install-recommends kicad
 fi
 
 # Arduino IDE
@@ -324,3 +261,27 @@ then
     sudo snap install arduino
     sudo usermod -a -G dialout $USER #Give user access to ‘com’ port and restart computer
 fi
+
+# Docker for Linux
+# https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+read -p "Do you want to install Docker? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo apt-get update
+    sudo apt install ca-certificates curl gnupg -y
+    sudo install -m 0755 -d /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+    echo \
+        "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+        "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+    sudo groupadd -f docker
+    sudo usermod -aG docker $USER
+    newgrp docker # activate changes
+    docker run hello-world
+fi
+

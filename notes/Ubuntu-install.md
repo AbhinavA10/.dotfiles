@@ -3,12 +3,6 @@ Common tools/programs that may need to be manually installed are listed as the f
 
 This file does not outline installation instructions for tools already installed using `install.sh` or `optional_install.sh`
 
-## Git
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "youremail@domain.com"
-```
-
 If installing git-all has a `runit` and `git-dameon` ... error, then do:
 
 ```bash
@@ -59,30 +53,6 @@ nvm install node
 nvm use node 
 ```
 
-## FreeFileSync
-Go to https://freefilesync.org/download.php. Download latest version for Linux.
-
-```bash
-sudo tar -zxvf ~/Downloads/FreeFileSync_*_Linux.tar.gz -C /opt
-gedit ~/.local/share/applications/FreeFileSync.desktop
-```
-
-Then copy paste the following into the notepad file that opens:
-```
-[Desktop Entry]
-Type=Application
-Name=FreeFileSync
-GenericName=Folder Comparison and Synchronization
-GenericName[de_DE]=Ordnervergleich und Synchronisation
-Exec=/opt/FreeFileSync/FreeFileSync %F
-Icon=/opt/FreeFileSync/Resources/FreeFileSync.png
-NoDisplay=false
-Terminal=false
-Categories=Utility;FileTools;
-StartupNotify=true
-```
-Source: http://ubuntuhandbook.org/index.php/2020/06/install-freefilesync-10-25-ubuntu-20-04/
-
 ## ROS - Kinetic
 
 ```bash
@@ -97,31 +67,6 @@ sudo apt-get install ros-kinetic-jsk-recognition-msgs
 sudo apt install ros-kinetic-jsk-rviz-plugins
 sudo apt-get install ros-kinetic-rqt
 sudo apt-get install ros-next-rqt-common-plugins
-```
-
-## Pip for Python 2
-
-```bash
-sudo apt install python-pip
-```
-
-## Terminal Profiles
-
-Sources: [Exporting and Importing](https://unix.stackexchange.com/questions/448811/how-to-export-a-gnome-terminal-profile) and [Resetting](https://unix.stackexchange.com/questions/448811/how-to-export-a-gnome-terminal-profile)
-
-To export gnome-terminal profiles:
-```bash
-dconf dump /org/gnome/terminal/legacy/profiles:/ > gnome-terminal-profiles.dconf
-```
-
-To load gnome-terminal profiles from a file named `gnome-terminal-profiles.dconf`:
-```bash
-dconf load /org/gnome/terminal/legacy/profiles:/ < gnome-terminal-profiles.dconf
-```
-
-To reset terminal settings:
-```bash
-dconf reset -f /org/gnome/terminal/
 ```
 
 ## OpenCV for C+
@@ -153,38 +98,6 @@ dpkg -r $PACKAGE_NAME_YOU_CHOSEN
 
 To test the installation of OpenCV, try running the program [shown here](https://docs.opencv.org/2.4/doc/tutorials/introduction/linux_gcc_cmake/linux_gcc_cmake.html#linux-gcc-usage)
 
-## Python
-
-- fix pip and pip2 using the stackoverflow link -- the 'cant import main' error in pip.
-- follow instructuions on tensorflow website to install tensorflow in venv
-
-```
-     sys.exit(__main__._main()) -- modified line
-     sys.exit(main()) -- original line
-```
-
-See: https://stackoverflow.com/questions/28210269/importerror-cannot-import-name-main-when-running-pip-version-command-in-windo
-
-Also, we can't source ros in bash and still use python 3 for another project. See [this](https://stackoverflow.com/questions/43019951/after-install-ros-kinetic-cannot-import-opencv/43500095#43500095)
-
-```bash
-pip install -r requirements.txt
-```
-
-## venv
-
-```bash
-pip3 install virtualenv
-```
-
-### Make a new virtualenv
-
-These virtualenv's are non-relocatable
-
-```bash
-virtualenv -p python3 ./venv
-source venv/bin/activate
-```
 
 ## dlib
 
@@ -195,18 +108,6 @@ See [this](https://www.pyimagesearch.com/2018/01/22/install-dlib-easy-complete-g
 ```bash
 pip install dlib
 ```
-
-## FZF and vim
-```bash
-sudo apt-get install vim
-```
-https://github.com/junegunn/fzf#using-homebrew-or-linuxbrew
-Follow instructions for fzf and vim plugin
-
-Install vim-plug:
-https://github.com/junegunn/vim-plug
-https://github.com/junegunn/fzf.vim/issues/85
-https://vi.stackexchange.com/questions/13718/how-to-install-fzf-vim-with-vundle
 
 ## OpenVINO
 
@@ -253,18 +154,6 @@ wget -q https://josm.openstreetmap.de/josm-apt.key -O- | sudo apt-key add -
 sudo apt-get update
 sudo apt-get remove josm josm-plugins
 sudo apt-get install josm
-```
-
-## Arc theme -- Ubuntu 16
-
-https://www.omgubuntu.co.uk/2016/06/install-latest-arc-gtk-theme-ubuntu-16-04
-https://github.com/horst3180/arc-theme
-
-```bash
-sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
-sudo apt-get update && sudo apt-get install arc-theme
-wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
-sudo apt-key add - < Release.key
 ```
 
 ## Octave
@@ -338,9 +227,9 @@ Installing processing on Ubuntu: http://www.artsnova.com/processing/Installing-P
 ```bash
 ubuntu-drivers devices
 # install recommended driver
-sudo apt install nvidia-driver-470
+sudo apt install nvidia-driver-535
 sudo reboot
 nvidia-smi
 sudo nvidia-settings
-sudo apt install nvtop
+sudo snap install nvtop
 ```

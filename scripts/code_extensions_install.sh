@@ -9,9 +9,7 @@ codeExtensions=(
     "ms-python.python"
     "nick-rudenko.back-n-forth"
     "vscode-icons-team.vscode-icons"
-    "eamodio.gitlens"
     "mhutchie.git-graph"
-    "zxh404.vscode-proto3"
 )
 
 for ext in ${codeExtensions[@]}; do
