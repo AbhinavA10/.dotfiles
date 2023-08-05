@@ -285,3 +285,19 @@ then
     docker run hello-world
 fi
 
+# Nvidia Docker
+read -p "Do you want to install NVIDIA GPU support for Docker? Requires using NVidia Drivers" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo apt-get install mesa-utils
+    sudo prime-select nvidia
+
+    distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+    curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+    curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+    sudo apt-get update && sudo apt-get install -y nvidia-docker2 nvidia-container-toolkit
+    sudo systemctl daemon-reload
+    sudo systemctl restart docker
+
+fi
