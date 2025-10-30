@@ -8,10 +8,9 @@ This file does not outline installation instructions for tools already installed
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
-sudo apt-get install xclip
-xclip -sel clip < ~/.ssh/id_rsa.pub
+cat ~/.ssh/id_rsa.pub
 ```
-- paste into github section
+- copy + paste into github section
 - Then test connection with `ssh -T git@github.com`
 
 ## Firefox
