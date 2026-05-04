@@ -1,6 +1,6 @@
 [user]
-	name = Abhinav
-	email = abhiraja1012@gmail.com
+	name = Abhinav Agrahari
+	email = aagrahari@deeptrekker.com
 
 [alias]
 	aliases = !git config --list | grep ^alias\\. | cut -c 7- | grep -Ei --color \"$1\" "#"
@@ -50,3 +50,13 @@
 	new = green bold
 	whitespace = red reverse
 
+[pull]
+	rebase = false
+[safe]
+	directory = /mnt/dt_shared_drive/Eng/eagle_repos/7920
+	directory = /mnt/dt_shared_drive/Eng/eagle_repos/7920/
+	directory = /mnt/dt_shared_drive/Eng/eagle_repos/7127
+	directory = /mnt/dt_shared_drive/Eng/eagle_repos/1585
+	directory = /home/aagrahari/Downloads/test/dt_ros_perception
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/

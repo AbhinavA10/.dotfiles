@@ -10,7 +10,7 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -242,14 +242,14 @@ export NVM_DIR="$HOME/.nvm"
 # CONDA
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/abhi/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/aagrahari/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/abhi/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/abhi/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/aagrahari/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/aagrahari/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/abhi/miniconda3/bin:$PATH"
+        export PATH="/home/aagrahari/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -286,3 +286,8 @@ export PATH=$(dedup_paths "$PATH:$(join_paths USER_PATHS[@])")
 # Delete functions so they can't be called by a user when the terminal has opened
 unset join_paths
 unset dedup_paths
+
+
+export STM32_PRG_PATH=/home/aagrahari/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin
+export X4_MEDIA_SESSION_DIR=/mnt/Data/x4_media_sessions
+export ROS_DOMAIN_ID=35

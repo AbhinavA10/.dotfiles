@@ -70,3 +70,12 @@ alias sigkill="sudo kill -9"
 # systemd services
 alias running_services='systemctl list-units  --type=service  --state=running'
 alias active_services='systemctl list-units  --type=service  --state=active'
+alias oclea-dev='sh ~/.dotfiles/scripts/oclea-dev.sh'
+alias dt-docs='sh ~/.dotfiles/scripts/dt-docs.sh'
+alias controller-gui='sh ~/.dotfiles/scripts/controller-gui.sh'
+alias web-app='cd ~/Documents/code_repos/dt_bweb_rov_control_app/'
+alias api='sh ~/.dotfiles/scripts/api.sh'
+alias ros='cd ~/Documents/code_repos/dt_ros/'
+alias image='cd ~/Documents/code_repos/x4-image/'
+alias signalling-server='cd ~/Documents/code_repos/dt_bridge_signalr_server/ && docker compose up'
+alias share-internet='sh ~/.dotfiles/scripts/share-internet.sh'
