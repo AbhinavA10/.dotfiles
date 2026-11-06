@@ -58,5 +58,5 @@
 	directory = /mnt/dt_shared_drive/Eng/eagle_repos/7127
 	directory = /mnt/dt_shared_drive/Eng/eagle_repos/1585
 	directory = /home/aagrahari/Downloads/test/dt_ros_perception
-[url "git@bitbucket.org:"]
+[url "git@ssh.bitbucket.org:"]
 	insteadOf = https://bitbucket.org/
