@@ -287,6 +287,7 @@ export PATH=$(dedup_paths "$PATH:$(join_paths USER_PATHS[@])")
 unset join_paths
 unset dedup_paths
 
+source /home/aagrahari/.dotfiles/credentials/bitbucket
 
 export STM32_PRG_PATH=/home/aagrahari/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin
 export X4_MEDIA_SESSION_DIR=/mnt/Data/x4_media_sessions
